@@ -1,3 +1,7 @@
+var express = require('express');
+var router = express.Router();
+
+router.get('/salesforce', function(req, res, next) {
 var sf = require('node-salesforce');
 var conn = new sf.Connection({
   // you can change loginUrl to connect to sandbox or prerelease env.
@@ -17,3 +21,6 @@ conn.login(username, password, function(err, userInfo) {
   console.log("Org ID: " + userInfo.organizationId);
   // ...
 });
+});
+
+module.exports = router;

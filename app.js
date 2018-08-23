@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var sf = require('node-salesforce');
 var salesforceAccounts = require('./model/salesforce');
 
 logger('process.env.port'+process.env.PORT);
