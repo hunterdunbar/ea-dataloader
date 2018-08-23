@@ -5,13 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
-var mongoose = require('mongoose');
-var crmapi = require('./routes/api/crm-api.js');
-require('dotenv').config();
+var users = require('./routes/users');
+
 var app = express();
-mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0-shard-00-00-x7u8t.mongodb.net:27017,cluster0-shard-00-01-x7u8t.mongodb.net:27017,cluster0-shard-00-02-x7u8t.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin`);
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,15 +21,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api',crmapi);
-
-//Route the root and getAccounts paths to the Router
 app.use('/', index);
-app.use('/getAccounts', index);
-
-app.get('/testApi.html',function(req,res){
-  res.sendfile(path.join(__dirname+'/testApi.html'));
-});
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

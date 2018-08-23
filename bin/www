@@ -1,7 +1,7 @@
 var app = require('../app');
 var http = require('http');
 
-var port = 5050;
+var port = 7070;
 
 app.set('port', port);
 

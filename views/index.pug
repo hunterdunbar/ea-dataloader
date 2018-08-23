@@ -2,13 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to Express CRM: Use the form below to enter accounts. As you add new accounts, they will be displayed below.
+  p Welcome to Hunter's CRM: Use the form below to enter Accounts. Click the link below to view all Accounts that have been entered.
   .main.container
     .row
       .col-md-6.col-md-offset-3
         h3 Create Accounts
-        //This form collects the information that will be used to add Accounts to the app.locals.accList variable
-        form(method='POST' action="/accounts")
+
+        form(method='GET' action="/getAccounts")
           div.form-group
             label(for='name') Account Name:
             input#name.form-control(type='text', placeholder='first and last' name='name')
@@ -26,5 +26,20 @@ block content
             input#pw.form-control(type='text' name='owner')
           button.btn.btn-primary(type='submit') Create Account
   br
-  //Then add a link where uers can view all accounts that have been added.
-  a(href='/getAccounts') View All Accounts
+  if accountList.length > 0
+    table
+      thead
+        tr
+          th Name
+          th Email
+          th Address
+          th Phone
+          th Owner
+      tbody
+        each val in accountList
+          tr
+            td #{val.name}
+            td #{val.email}
+            td #{val.address}
+            td #{val.phone}
+            td #{val.owner}
