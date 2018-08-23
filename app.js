@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-logger('process.env.port'+process.env.port);
+logger('process.env.port'+process.env.PORT);
 
 var app = express();
 

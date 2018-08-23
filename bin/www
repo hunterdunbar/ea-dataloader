@@ -2,10 +2,10 @@ var app = require('../app');
 var http = require('http');
 
 var port = 7070;
-if(process.env.port != null){
-  port = process.env.port;
+if(process.env.PORT != null){
+  port = process.env.PORT;
 }
-console.log(process.env.port);
+console.log(process.env.PORT);
 app.set('port', port);
 
 var server = http.createServer(app);
