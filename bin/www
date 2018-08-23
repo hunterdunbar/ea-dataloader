@@ -2,6 +2,9 @@ var app = require('../app');
 var http = require('http');
 
 var port = 7070;
+if(process.env.port != null){
+  port = process.env.port
+}
 
 app.set('port', port);
 
