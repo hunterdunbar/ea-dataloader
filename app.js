@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var salesforceAccounts = require('./model/salesforce');
+require('dotenv').config();
 
 logger('process.env.port'+process.env.PORT);
 
